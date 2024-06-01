@@ -121,4 +121,7 @@ echo "Done";
 --> http://:?   : bool(false)
 --> http://blah.com:123456   : bool(false)
 --> http://blah.com:abcdef   : bool(false)
+--> http://www.php.net:80/#some_fragment?test=1: bool(false)
+--> http://www.php.net:80/#some_fragment?test=1&test2=char: bool(false)
+--> http://www.php.net:80/index.php#some_fragment?test=1&test2=char: bool(false)
 Done

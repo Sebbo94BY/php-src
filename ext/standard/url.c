@@ -318,6 +318,17 @@ parse_host:
 		e = p-1;
 	}
 
+	/**
+	 * Validate that the given query and fragment is valid, otherwise reject the string as URL.
+	 *
+	 * RFC3986: The query component is indicated by the first question mark ("?") character and
+	 * terminated by a number sign ("#") character or by the end of the URI.
+	 */
+	if ((strstr(ret->query, "#") != NULL) || (strstr(ret->fragment, "?") != NULL)) {
+		php_url_free(ret);
+		return NULL;
+	}
+
 	if (s < e || s == ue) {
 		ret->path = zend_string_init(s, (e - s), 0);
 		php_replace_controlchars_ex(ZSTR_VAL(ret->path), ZSTR_LEN(ret->path));

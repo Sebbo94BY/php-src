@@ -109,6 +109,11 @@ $urls = array(
 'http://:?',
 'http://blah.com:123456',
 'http://blah.com:abcdef',
+
+// Non RFC3986-compliant URLs which are NOT parsable
+'http://www.php.net:80/#some_fragment?test=1',
+'http://www.php.net:80/#some_fragment?test=1&test2=char',
+'http://www.php.net:80/index.php#some_fragment?test=1&test2=char',
 );
 
 
